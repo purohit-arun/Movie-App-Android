@@ -47,7 +47,7 @@
             android:layout_margin="25dp"
             android:layout_marginBottom="18dp"
             android:onClick="@{()->myMovieViewModel.insertMovie()}"
-            android:text="Save Movie"
+            android:text="@{myMovieViewModel.buttonText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_release_date_et" />

@@ -1,9 +1,7 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface MovieDao {
@@ -15,5 +13,8 @@ interface MovieDao {
 
     @Delete
     suspend fun deleteMovie(movie: Movie):Int
+
+    @Query("select * from movie_table")
+    fun getAllMovies():LiveData<List<Movie>>
 
 }

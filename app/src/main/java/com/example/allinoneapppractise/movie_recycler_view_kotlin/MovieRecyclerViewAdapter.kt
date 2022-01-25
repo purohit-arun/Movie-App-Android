@@ -9,10 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.allinoneapppractise.R
-import com.example.allinoneapppractise.custom_movie_array_adapter_kotlin.Movie
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.Movie
 
-class MovieRecyclerViewAdapter(val context: Context, val mList: ArrayList<Movie>) :
+class MovieRecyclerViewAdapter(val context: Context) :
     RecyclerView.Adapter<MovieRecyclerViewAdapter.MyViewHolder>() {
+
+    //this list hold the list of movies
+    val movieList = ArrayList<Movie>()
+
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val posterImage = itemView.findViewById<ImageView>(R.id.poster_iv)
@@ -27,13 +31,18 @@ class MovieRecyclerViewAdapter(val context: Context, val mList: ArrayList<Movie>
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentMovie = mList[position]
-        holder.movieName.text = currentMovie.mName
-        holder.movieReleaseDate.text = currentMovie.mRelease
+        val currentMovie = movieList[position]
+        holder.movieName.text = currentMovie.movie_name
+        holder.movieReleaseDate.text = currentMovie.release_date
 //        holder.posterImage.setImageResource(currentMovie.mImageDrawable)
     }
 
     override fun getItemCount(): Int {
-        return mList.size
+        return movieList.size
+    }
+
+    fun setListOfMovie(movies: List<Movie>){
+        movieList.clear()
+        movieList.addAll(movies)
     }
 }

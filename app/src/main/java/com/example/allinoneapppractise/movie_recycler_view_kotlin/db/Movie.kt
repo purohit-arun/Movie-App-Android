@@ -12,8 +12,8 @@ data class Movie(
     val id: Int,
 
     @ColumnInfo(name = "movie_name")
-    val movie_name: String,
+    var movie_name: String,
 
     @ColumnInfo(name = "release_date")
-    val release_date: String,
+    var release_date: String,
 )
