@@ -1,7 +1,5 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,18 +11,19 @@ import kotlinx.coroutines.launch
 
 class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
 
-    val inputMovie = MutableLiveData<String>()
-    val inputReleaseDate = MutableLiveData<String>()
+    val inputMovie = MutableLiveData<String?>()
+    val inputReleaseDate = MutableLiveData<String?>()
     val movies = repository.moviesList
     private var isUpdateOrDeleteFlag = false
-    private lateinit var movieToUpdateOrDelete: Movie
+    private lateinit var movieToInsertOrUpdate: Movie
 
 
     /**
     variable for status message to show on toast
      */
     private val statusMessage = MutableLiveData<Event<String>>()
-    val message: LiveData<Event<String>> = statusMessage
+    val message: LiveData<Event<String>>
+        get() = statusMessage
 
     //livedata text for insert and delete button
     val buttonText = MutableLiveData<String>()
@@ -34,33 +33,40 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     }
 
 
-    fun insertMovie() = viewModelScope.launch {
-        val moviename = inputMovie.value!!
-        val releaseDate = inputReleaseDate.value!!
-        repository.insertMovie(Movie(0, moviename, releaseDate))
-    }
+//    fun insertMovie() = viewModelScope.launch {
+//        val moviename = inputMovie.value!!
+//        val releaseDate = inputReleaseDate.value!!
+//        repository.insertMovie(Movie(0, moviename, releaseDate))
+//    }
 
-    fun initUpdateAndDelete(movieItem: Movie) {
+    fun initInsertAndUpdate(movieItem: Movie) {
         inputMovie.value = movieItem.movie_name
         inputReleaseDate.value = movieItem.release_date
         isUpdateOrDeleteFlag = true
+        movieToInsertOrUpdate = movieItem
         buttonText.value = "Update Movie"
     }
 
 
-    fun updateMovie() = viewModelScope.launch {
+    fun updateOrInsertMovie() = viewModelScope.launch {
         if (inputMovie.value == null) {
             statusMessage.value = Event("Please Enter the movie name")
         } else if (inputReleaseDate.value == null) {
             statusMessage.value = Event("Please Enter the release date")
         } else {
             if (isUpdateOrDeleteFlag) {
-                movieToUpdateOrDelete.movie_name = inputMovie.value!!
-                movieToUpdateOrDelete.release_date = inputMovie.value!!
-                update(movieToUpdateOrDelete)
+                movieToInsertOrUpdate.movie_name = inputMovie.value!!
+                movieToInsertOrUpdate.release_date = inputReleaseDate.value!!
+                update(movieToInsertOrUpdate)
+                isUpdateOrDeleteFlag = false
+                buttonText.value = "Save Movie"
+                inputMovie.value = null
+                inputReleaseDate.value = null
             }
             else{
                 insert(Movie(0, inputMovie.value.toString(), inputReleaseDate.value.toString()))
+                inputMovie.value = null
+                inputReleaseDate.value = null
             }
         }
     }

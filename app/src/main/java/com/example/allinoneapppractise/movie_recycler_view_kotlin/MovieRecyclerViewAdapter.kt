@@ -7,33 +7,42 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.allinoneapppractise.R
+import com.example.allinoneapppractise.databinding.ListItemMovie2Binding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.Movie
 
-class MovieRecyclerViewAdapter(val context: Context) :
+class MovieRecyclerViewAdapter(val context: Context, private val clickListener: (Movie) -> Unit) :
     RecyclerView.Adapter<MovieRecyclerViewAdapter.MyViewHolder>() {
 
     //this list hold the list of movies
     val movieList = ArrayList<Movie>()
 
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val posterImage = itemView.findViewById<ImageView>(R.id.poster_iv)
-        val movieName = itemView.findViewById<TextView>(R.id.movie_name_tv)
-        val movieReleaseDate = itemView.findViewById<TextView>(R.id.release_date_tv)
+    class MyViewHolder(val binding: ListItemMovie2Binding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
+            binding.movieNameTv.text = movie.movie_name
+            binding.releaseDateTv.text = movie.release_date
+            binding.listItemLayout.setOnClickListener {
+                clickListener(movie)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_movie_2, parent, false)
-        return MyViewHolder(view)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding: ListItemMovie2Binding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.list_item_movie_2, parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentMovie = movieList[position]
-        holder.movieName.text = currentMovie.movie_name
-        holder.movieReleaseDate.text = currentMovie.release_date
+        holder.bind(currentMovie, clickListener)
+
+//        holder.movieName.text = currentMovie.movie_name
+//        holder.movieReleaseDate.text = currentMovie.release_date
 //        holder.posterImage.setImageResource(currentMovie.mImageDrawable)
     }
 
@@ -41,7 +50,7 @@ class MovieRecyclerViewAdapter(val context: Context) :
         return movieList.size
     }
 
-    fun setListOfMovie(movies: List<Movie>){
+    fun setListOfMovie(movies: List<Movie>) {
         movieList.clear()
         movieList.addAll(movies)
     }
