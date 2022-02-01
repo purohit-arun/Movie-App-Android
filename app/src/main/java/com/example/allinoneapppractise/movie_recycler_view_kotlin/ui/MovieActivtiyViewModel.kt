@@ -1,12 +1,12 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.allinoneapppractise.custom_movie_array_adapter_kotlin.Event
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo.MovieRepo
 import kotlinx.coroutines.launch
 
 class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
@@ -71,7 +71,7 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
         }
     }
 
-    fun insert(movie:Movie) = viewModelScope.launch{
+    fun insert(movie: Movie) = viewModelScope.launch{
         val newRowId :Long = repository.insertMovie(movie)
         if(newRowId > -1 ){
             statusMessage.value = Event("Movie added successfully with id $newRowId")

@@ -1,17 +1,13 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.ListItemMovie2Binding
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.Movie
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 
 class MovieRecyclerViewAdapter(val context: Context, private val clickListener: (Movie) -> Unit) :
     RecyclerView.Adapter<MovieRecyclerViewAdapter.MyViewHolder>() {
@@ -55,3 +51,5 @@ class MovieRecyclerViewAdapter(val context: Context, private val clickListener: 
         movieList.addAll(movies)
     }
 }
+
+//TODO: 1 Functionality -> Long press the movie list item to delete the movie from the list

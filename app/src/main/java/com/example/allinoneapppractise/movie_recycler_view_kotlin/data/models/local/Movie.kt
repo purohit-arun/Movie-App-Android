@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.db
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

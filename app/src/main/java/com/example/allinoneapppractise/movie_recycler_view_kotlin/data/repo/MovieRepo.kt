@@ -1,6 +1,7 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.db
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo
 
-import androidx.lifecycle.LiveData
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
 
 class MovieRepo(private val dao: MovieDao) {
 

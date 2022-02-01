@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
 import android.os.Bundle
 import android.widget.Toast
@@ -8,10 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.allinoneapppractise.R
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.Movie
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import com.example.allinoneapppractise.databinding.ActivityMovieRecyclerViewBinding
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.MovieDatabase
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.db.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDatabase
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo.MovieRepo
 
 class MovieRecyclerViewActivity : AppCompatActivity() {
     lateinit var binding: ActivityMovieRecyclerViewBinding

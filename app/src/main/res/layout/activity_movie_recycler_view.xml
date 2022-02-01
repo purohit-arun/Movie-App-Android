@@ -7,14 +7,14 @@
 
         <variable
             name="myMovieViewModel"
-            type="com.example.allinoneapppractise.movie_recycler_view_kotlin.MovieActivtiyViewModel" />
+            type="com.example.allinoneapppractise.movie_recycler_view_kotlin.ui.MovieActivtiyViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".movie_recycler_view_kotlin.MovieRecyclerViewActivity">
+        tools:context=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity">
 
         <EditText
             android:id="@+id/movie_name_et"
