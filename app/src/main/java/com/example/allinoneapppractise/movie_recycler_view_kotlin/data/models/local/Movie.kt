@@ -16,4 +16,11 @@ data class Movie(
 
     @ColumnInfo(name = "release_date")
     var release_date: String,
+
+    @ColumnInfo(name = "movie_rating")
+    var rating: String,
+
+    @ColumnInfo(name = "movie_image")
+    var movie_image: String
+
 )

@@ -46,11 +46,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
             android:layout_marginBottom="18dp"
-            android:onClick="@{()->myMovieViewModel.updateOrInsertMovie()}"
             android:text="@{myMovieViewModel.buttonText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_release_date_et" />
+            <!--android:onClick="@{()->myMovieViewModel.updateOrInsertMovie()}"-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movie_rv"

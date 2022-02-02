@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.allinoneapppractise" >
+    package="com.example.allinoneapppractise">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AllInOneAppPractise" >
+        android:theme="@style/Theme.AllInOneAppPractise">
         <activity
             android:name=".recycler_view_demos.by_philip.RecyclerViewDemoActivity"
             android:exported="false" />
@@ -20,7 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
