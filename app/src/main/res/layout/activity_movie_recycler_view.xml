@@ -8,7 +8,6 @@
         <variable
             name="myMovieViewModel"
             type="com.example.allinoneapppractise.movie_recycler_view_kotlin.ui.MovieActivtiyViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

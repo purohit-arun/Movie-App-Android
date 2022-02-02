@@ -16,28 +16,25 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     val buttonText = MutableLiveData<String>()
     val inputMovie = MutableLiveData<String?>()
     val inputReleaseDate = MutableLiveData<String?>()
-    val _movieList1 = MutableLiveData<List<Movie>>()
-    val movieList1: LiveData<List<Movie>> = _movieList1
-
-    val _movieList = liveData {  emit(repository.getMovies().value) }
 
 
 
+    var movie: LiveData<List<Movie>>? = repository.getMovies
 
-    var movie : LiveData<List<Movie>>? = null
-  /*  val movies = viewModelScope.launch {
-        async {
-            movie = repository.getMovies()
-        }
-    }*/
+    /*  val movies = viewModelScope.launch {
+          async {
+              movie = repository.getMovies()
+          }
+      }*/
     init {
-      buttonText.value = "Save Movie"
-        viewModelScope.launch {
-            movie =  repository.getMovies()
+        buttonText.value = "Save Movie"
+        /*viewModelScope.launch {
+            val jobObject = repository.getMovies
             Log.i("   TAG", "Movie data: ${movie?.value}")
-        }
+        }*/
 
     }
+
 
     /**
      * variable for status message to show on toast
@@ -47,7 +44,7 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     private var isUpdateOrDeleteFlag = false
     private lateinit var movieToInsertOrUpdate: Movie
 
-    suspend fun getMovies() = withContext(Dispatchers.IO) { repository.getMovies() }
+    //suspend fun getMovies() = withContext(Dispatchers.IO) { repository.getMovies() }
 
 
 //    fun insertMovie() = viewModelScope.launch {

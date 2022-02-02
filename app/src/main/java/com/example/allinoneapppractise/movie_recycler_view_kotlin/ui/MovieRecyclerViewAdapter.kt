@@ -1,6 +1,7 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -18,7 +19,7 @@ class MovieRecyclerViewAdapter(
     private val movieList: ArrayList<Movie>? = null
 
     fun setListOfMovie(movies: List<Movie>) {
-        movieList?.clear()
+        //movieList?.clear()
         movieList?.addAll(movies)
         notifyDataSetChanged()
     }
@@ -43,6 +44,8 @@ class MovieRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentMovie = movieList?.get(position)
+        Log.i("=============================================================TAG" +
+                "-------------------------------------------", "onBindViewHolder: $currentMovie")
         if (currentMovie != null) {
             holder.bind(currentMovie, clickListener)
         }

@@ -6,6 +6,8 @@ import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.lo
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
 import com.example.retrofitdemo.retrofit_practise.MovieService
 import com.example.retrofitdemo.retrofit_practise.movie_data_classes.Movies
+import kotlinx.coroutines.*
+import kotlin.coroutines.coroutineContext
 
 class MovieRepo(
     private val dao: MovieDao,
@@ -29,7 +31,9 @@ class MovieRepo(
     val _list1 = MutableLiveData<List<Movie>>()
     val list1: LiveData<List<Movie>> = _list1
 
-    suspend fun getMovies(): LiveData<List<Movie>> {
+    val getMovies = dao.getAllMovies()
+
+    /*suspend fun getMovies(): LiveData<List<Movie>> {
         val remoteMovieList = movieService.getShows()
         return if (remoteMovieList.isSuccessful) {
             remoteMovieList.body()?.let { it ->
@@ -49,5 +53,5 @@ class MovieRepo(
         } else {
             list1
         }
-    }
+    }*/
 }
