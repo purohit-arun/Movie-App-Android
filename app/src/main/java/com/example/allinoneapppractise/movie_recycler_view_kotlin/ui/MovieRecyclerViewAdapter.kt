@@ -1,13 +1,13 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.allinoneapppractise.R
-import com.example.allinoneapppractise.databinding.ListItemMovie2Binding
 import com.example.allinoneapppractise.databinding.MovieItemBinding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 
@@ -16,11 +16,11 @@ class MovieRecyclerViewAdapter(
     private val clickListener: (Movie) -> Unit
 ) : RecyclerView.Adapter<MovieRecyclerViewAdapter.MyViewHolder>() {
 
-    private val movieList: ArrayList<Movie>? = null
+    private val movieList: ArrayList<Movie> = arrayListOf()
 
     fun setListOfMovie(movies: List<Movie>) {
-        //movieList?.clear()
-        movieList?.addAll(movies)
+        movieList.clear()
+        movieList.addAll(movies)
         notifyDataSetChanged()
     }
 
@@ -29,6 +29,7 @@ class MovieRecyclerViewAdapter(
         fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
             binding.movieNameTv.text = movie.movie_name
             binding.releaseDateTv.text = movie.release_date
+            binding.movieIv.load(movie.movie_image)
             binding.listItemLayout.setOnClickListener {
                 clickListener(movie)
             }
@@ -43,19 +44,13 @@ class MovieRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentMovie = movieList?.get(position)
-        Log.i("=============================================================TAG" +
-                "-------------------------------------------", "onBindViewHolder: $currentMovie")
-        if (currentMovie != null) {
-            holder.bind(currentMovie, clickListener)
-        }
+        val currentMovie = movieList[position]
+        holder.bind(currentMovie, clickListener)
     }
 
     override fun getItemCount(): Int {
-        return movieList?.size ?: 0
+        return movieList.size
     }
-
-
 }
 
 //TODO: 1 Functionality -> Long press the movie list item to delete the movie from the list

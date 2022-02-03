@@ -3,6 +3,8 @@
     package="com.example.allinoneapppractise">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
+        <service
+            android:name=".mediaplayer.MusicService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".service_demo.BackgroundServiceDemoMainActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".service_demo.TimerForegroundService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
+            android:exported="false" />
         <activity
             android:name=".recycler_view_demos.by_philip.RecyclerViewDemoActivity"
             android:exported="false" />
@@ -20,7 +39,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
+            android:name=".mediaplayer.ServiceMediaPlayer"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

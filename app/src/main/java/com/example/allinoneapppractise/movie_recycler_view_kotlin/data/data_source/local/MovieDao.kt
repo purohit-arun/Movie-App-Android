@@ -19,5 +19,5 @@ interface MovieDao {
     fun getAllMovies(): LiveData<List<Movie>>
 
     @Insert
-    suspend fun insertListOfMovies(movies: List<Movie>)
+    fun insertListOfMovies(movies: List<Movie>)
 }

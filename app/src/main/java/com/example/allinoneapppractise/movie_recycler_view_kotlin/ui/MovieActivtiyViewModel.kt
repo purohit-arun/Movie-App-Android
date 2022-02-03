@@ -19,7 +19,7 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
 
 
 
-    var movie: LiveData<List<Movie>>? = repository.getMovies
+    var movie: LiveData<List<Movie>>? = repository.getMovies()
 
     /*  val movies = viewModelScope.launch {
           async {

@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
-import com.example.retrofitdemo.retrofit_practise.MovieService
-import com.example.retrofitdemo.retrofit_practise.movie_data_classes.Movies
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote.MovieService
 import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
 
 class MovieRepo(
     private val dao: MovieDao,
@@ -33,25 +31,25 @@ class MovieRepo(
 
     val getMovies = dao.getAllMovies()
 
-    /*suspend fun getMovies(): LiveData<List<Movie>> {
-        val remoteMovieList = movieService.getShows()
-        return if (remoteMovieList.isSuccessful) {
-            remoteMovieList.body()?.let { it ->
-                it.map {
-                    Movie(
-                        0,
-                        it.name!!,
-                        it.premiered!!,
-                        it.rating?.average.toString(),
-                        it.image?.medium!!
-                    )
-                }.also {
-                    dao.insertListOfMovies(it)
+    fun getMovies(): LiveData<List<Movie>> {
+        runBlocking(Dispatchers.IO) {
+            val remoteMovieList = movieService.getShows()
+            if (remoteMovieList.isSuccessful) {
+                remoteMovieList.body()?.let { it ->
+                    it.map {
+                        Movie(
+                            0,
+                            it.name!!,
+                            it.premiered!!,
+                            it.rating?.average.toString(),
+                            it.image?.medium!!
+                        )
+                    }.also {
+                        dao.insertListOfMovies(it)
+                    }
                 }
             }
-            dao.getAllMovies()
-        } else {
-            list1
         }
-    }*/
+        return dao.getAllMovies()
+    }
 }
