@@ -82,7 +82,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    
+
     // retrofit instance
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -92,8 +92,4 @@ dependencies {
 
     //image loading library - COIL
     implementation 'io.coil-kt:coil:1.4.0'
-
-
-
-
 }
