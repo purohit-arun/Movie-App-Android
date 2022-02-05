@@ -33,11 +33,9 @@ class MyService(
         return mBinder
     }
 
-    class MyBinder() : Binder() {
-        companion object {
-            fun getService(): MyService {
-                return MyService()
-            }
+    inner class MyBinder() : Binder() {
+        fun getService(): MyService {
+            return MyService()
         }
     }
 
@@ -77,6 +75,10 @@ class MyService(
 
 
     override fun run() {
+    }
+
+    fun getService(): MyService {
+        return MyService()
     }
 }
 
