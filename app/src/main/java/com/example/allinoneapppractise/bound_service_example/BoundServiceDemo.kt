@@ -6,16 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.ActivityBoundServiceDemoBinding
 
 class BoundServiceDemo : AppCompatActivity() {
+
     private lateinit var binding: ActivityBoundServiceDemoBinding
     private lateinit var myService: MyService
     private lateinit var mViewModel: ServiceViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_bound_service_demo)
@@ -34,7 +34,7 @@ class BoundServiceDemo : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        startSerice()
+        startService()
     }
 
     override fun onPause() {
@@ -49,7 +49,7 @@ class BoundServiceDemo : AppCompatActivity() {
         }
     }
 
-    private fun startSerice() {
+    private fun startService() {
         val serviceIntent = Intent(this, MyService::class.java)
         startService(serviceIntent)
         bindService()
