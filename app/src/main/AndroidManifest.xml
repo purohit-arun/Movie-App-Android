@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
         <activity
+            android:name=".fragment_practice.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".practice_handler.HandlerMainActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".handler_and_looperbycodinginflow.MainActivity"
+            android:name=".bound_service_example.BoundServiceDemo"
             android:exported="false" />
 
         <service
@@ -55,7 +58,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".bound_service_example.BoundServiceDemo"
+            android:name=".handler_and_looperbycodinginflow.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

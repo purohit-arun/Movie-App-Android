@@ -7,15 +7,23 @@ import android.util.Log;
 
 public class ExamplerLooperThread extends Thread {
     private static final String TAG = "ExamplerLooperThread";
-    public Handler handler;
+    public Handler handler = new ExampleHandler();
+    public Looper looper;
+
 
     @Override
     public void run() {
         Looper.prepare();
-        handler = new Handler();
+
+        looper = Looper.getMainLooper();
+
+        //handler = new ExampleHandler();
+
+        Log.i(TAG, "run: on the thread " + Thread.currentThread().getName());
+
         Looper.loop();
 
-            Log.i(TAG, "run: on the thread " + Thread.currentThread().getName());
+
         /*for (int i = 0; i < 5; i++) {
             SystemClock.sleep(1000);
         }*/
