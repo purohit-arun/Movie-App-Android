@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.allinoneapppractise.R
 
-class BlankFragment : Fragment(R.layout.fragment_second) {
+class SecondFragment : Fragment(R.layout.fragment_first) {
     private lateinit var tvFirstFragment : TextView
 
 
