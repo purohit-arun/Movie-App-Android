@@ -24,7 +24,6 @@ class MovieRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-
     class MyViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
             binding.movieNameTv.text = movie.movie_name
@@ -34,16 +33,17 @@ class MovieRecyclerViewAdapter(
                 clickListener(movie)
             }
         }
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieRecyclerViewAdapter.MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: MovieItemBinding =
             DataBindingUtil.inflate(layoutInflater, R.layout.movie_item, parent, false)
-        return MyViewHolder(binding)
+        return MovieRecyclerViewAdapter.MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieRecyclerViewAdapter.MyViewHolder, position: Int) {
         val currentMovie = movieList[position]
         holder.bind(currentMovie, clickListener)
     }

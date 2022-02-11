@@ -3,6 +3,7 @@ package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.l
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "movie_table")
@@ -22,5 +23,4 @@ data class Movie(
 
     @ColumnInfo(name = "movie_image")
     var movie_image: String
-
-)
+):Serializable

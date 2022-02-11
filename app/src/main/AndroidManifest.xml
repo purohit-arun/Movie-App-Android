@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
         <activity
-            android:name=".activity_fragment_lifecycle.MainActivity"
+            android:name=".fragment_practice.MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".handler_and_looperbycodinginflow.MainActivity"
             android:exported="false" />
@@ -49,7 +50,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
+            android:name=".fragment_practice_2.MainActivity"
             android:exported="false" />
         <activity
             android:name=".recycler_view_demos.by_philip.RecyclerViewDemoActivity"
@@ -61,11 +62,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment_practice.MainActivity"
+            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
