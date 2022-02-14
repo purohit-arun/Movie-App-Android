@@ -20,11 +20,11 @@ class MovieRepo(
 
      suspend fun updateMovie(movie: Movie): Int {
          return dao.updateMovie(movie)
-     }
-
-     suspend fun deleteMovie(movie: Movie): Int {
-         return dao.deleteMovie(movie)
      }*/
+
+    suspend fun deleteMovie(movie: Movie): Int {
+        return dao.deleteMovie(movie)
+    }
 
     val _list1 = MutableLiveData<List<Movie>>()
     val list1: LiveData<List<Movie>> = _list1

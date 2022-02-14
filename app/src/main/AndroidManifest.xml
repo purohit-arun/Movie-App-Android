@@ -63,6 +63,9 @@
             android:exported="false" />
         <activity
             android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.anushka.didemo.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

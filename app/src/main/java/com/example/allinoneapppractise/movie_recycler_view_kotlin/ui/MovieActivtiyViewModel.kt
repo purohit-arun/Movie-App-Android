@@ -18,7 +18,6 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     val inputReleaseDate = MutableLiveData<String?>()
 
 
-
     var movie: LiveData<List<Movie>>? = repository.getMovies()
 
     /*  val movies = viewModelScope.launch {
@@ -103,4 +102,11 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
             statusMessage.value = Event("$noOfRowsChanged Movie updated")
         }
     }*/
+
+    fun deleteMovie(movie: Movie) = viewModelScope.launch {
+        val newRowId: Int = repository.deleteMovie(movie)
+    }
+
+
+
 }

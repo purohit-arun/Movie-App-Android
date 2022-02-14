@@ -1,10 +1,13 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -53,10 +56,12 @@ class MovieListFragment : Fragment() {
         movieRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         mAdapter = MovieRecyclerViewAdapter(
-            this@MovieListFragment.requireContext(),
-        ) { selectedMovie: Movie ->
-            movieItemClicked(selectedMovie)
-        }
+            this@MovieListFragment.requireContext(), clickListener = { selectedMovie: Movie ->
+                movieItemClicked(selectedMovie)
+            }, onLongClickListener = {
+                onLongClickMovieDelete(it)
+            }
+        )
         movieRecyclerView.adapter = mAdapter
         displayMovieInRecyclerView()
 
@@ -91,5 +96,25 @@ class MovieListFragment : Fragment() {
             .addToBackStack(null)
             .commit()
 
+    }
+
+
+    /**
+     * To delete the movie :  when user long click the movie list item
+     */
+
+
+    private fun onLongClickMovieDelete(movieItem: Movie) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Delete the movie")
+
+        alertDialog.setMessage("Are You sure??")
+            .setCancelable(true)
+            .setPositiveButton("Yes") { _, _ ->
+                myMovieViewModel.deleteMovie(movieItem)
+                Toast.makeText(requireContext(), "$movieItem deleted", Toast.LENGTH_SHORT).show()
+            }
+
+        alertDialog.show()
     }
 }
