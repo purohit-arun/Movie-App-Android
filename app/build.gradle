@@ -109,4 +109,9 @@ dependencies {
     def fragment_version = "1.4.1"
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    //dagger dependency
+    implementation 'com.google.dagger:dagger:2.40.5'
+    kapt 'com.google.dagger:dagger-compiler:2.40.5'
+
 }
