@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
         <activity
+            android:name="com.anushka.didemo.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".fragment_practice.MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".handler_and_looperbycodinginflow.MainActivity"
             android:exported="false" />
@@ -65,10 +67,11 @@
             android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
             android:exported="false" />
         <activity
-            android:name="com.anushka.didemo.MainActivity"
+            android:name=".di_cheezy_code.DIDemoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
