@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.didemo.DaggerSmartPhoneComponent
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var smartPhone: SmartPhone
+    @Inject
+    lateinit var smartPhone: SmartPhone
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DaggerSmartPhoneComponent.create().getSmartPhone()
-            .makeACallWithRecording()
+        DaggerSmartPhoneComponent.create().inject(this)
 
         /*val battery = Battery()
         val memoryCard = MemoryCard()

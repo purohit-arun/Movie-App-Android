@@ -1,10 +1,12 @@
-package kotlin_design_patterns.di
+package com.example.allinoneapppractise.di_cheezy_code
 
 import com.example.allinoneapppractise.di_cheezy_code.DIDemoActivity
+import com.example.allinoneapppractise.di_cheezy_code.NotificationServiceModule
+import com.example.allinoneapppractise.di_cheezy_code.UserRepositoryModule
 import com.example.allinoneapppractise.handler_and_looperbycodinginflow.MainActivity
 import dagger.Component
 
-@Component
+@Component(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponent {
     fun inject(mainActivity: DIDemoActivity)
 }

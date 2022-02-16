@@ -1,32 +1,17 @@
-package kotlin_design_patterns.di
+package com.example.allinoneapppractise.di_cheezy_code
 
+import com.example.allinoneapppractise.di_cheezy_code.NotificationService
+import com.example.allinoneapppractise.di_cheezy_code.UserRepository
 import javax.inject.Inject
 
-class EmailService @Inject constructor() {
-    fun send(body: String, to: String, from: String) {
-        println("$body sended to $to from mail address $from")
-        println("Email sent")
-    }
-
-}
-
-class UserRepository @Inject constructor() {
-    fun saveUser(email: String, password: String) {
-        println("user saved with the address $email and $password")
-        println("User registered")
-    }
-}
 
 class UserRegistrationService @Inject constructor(
     private val userRepos: UserRepository,
-    private val emailService: EmailService
+    private val notificationService: NotificationService
 ) {
-
     fun registerUser(email: String, password: String) {
         userRepos.saveUser(email, password)
-        emailService.send(
-            "Registration done", "apurohit@bosleo.com", "to-non_reply@cognizant.com"
-        )
+        notificationService.send("Registration done", "apurohit@bosleo.com", "to-non_reply@cognizant.com")
     }
 }
 

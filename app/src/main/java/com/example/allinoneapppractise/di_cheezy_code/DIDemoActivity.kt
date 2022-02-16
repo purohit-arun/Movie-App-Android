@@ -3,9 +3,6 @@ package com.example.allinoneapppractise.di_cheezy_code
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.allinoneapppractise.R
-import kotlin_design_patterns.di.DaggerUserRegistrationComponent
-import kotlin_design_patterns.di.EmailService
-import kotlin_design_patterns.di.UserRegistrationService
 import javax.inject.Inject
 
 class DIDemoActivity : AppCompatActivity() {
