@@ -4,9 +4,16 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class NotificationServiceModule {
+class NotificationServiceModule() {
     @Provides
-    fun getMessageService():NotificationService{
-        return MessageService()
+    @MessageQualifier
+    fun getMessageService(retryCount:Int): NotificationService {
+        return MessageService(retryCount)
+    }
+
+    @Provides
+    @EmailQualifier
+    fun getEmailService(emailService: EmailService): NotificationService {
+        return emailService
     }
 }

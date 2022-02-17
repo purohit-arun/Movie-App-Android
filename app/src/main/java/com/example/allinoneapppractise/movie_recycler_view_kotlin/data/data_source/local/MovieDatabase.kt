@@ -26,7 +26,8 @@ abstract class MovieDatabase : RoomDatabase() {
                 try {
                     var instance = INSTANCE
                     if (instance == null) {
-                        instance = Room.databaseBuilder(
+
+                        instance =Room.databaseBuilder(
                             context.applicationContext,
                             MovieDatabase::class.java,
                             "movie_database"

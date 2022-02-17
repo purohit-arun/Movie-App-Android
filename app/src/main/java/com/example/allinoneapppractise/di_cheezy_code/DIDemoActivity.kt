@@ -17,8 +17,12 @@ class DIDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_di_demo)
 
-        val component = DaggerUserRegistrationComponent.builder().build()
+        val component = DaggerUserRegistrationComponent
+            .factory()
+            .create(3)
+
         component.inject(this)
+
         userRegistrationService.registerUser("apurohit@bosleo.com", "Arun@123")
     }
 }

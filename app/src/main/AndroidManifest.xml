@@ -64,10 +64,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
+            android:name=".di_cheezy_code.DIDemoActivity"
             android:exported="false" />
         <activity
-            android:name=".di_cheezy_code.DIDemoActivity"
+            android:name=".movie_recycler_view_kotlin.ui.MovieRecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
