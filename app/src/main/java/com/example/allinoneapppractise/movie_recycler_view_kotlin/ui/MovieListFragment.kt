@@ -12,11 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.FragmentMovieListBinding
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.MovieApplicationClass
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDatabase
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote.MovieService
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.di.DaggerMovieComponent
 import com.example.retrofitdemo.retrofit_practise.MovieRetrofitInstance
 import javax.inject.Inject
 
@@ -31,6 +33,9 @@ class MovieListFragment : Fragment() {
 
     @Inject
     lateinit var dao: MovieDao
+
+    @Inject
+    lateinit var dao1: MovieDao
 
     @Inject
     lateinit var movieService: MovieService
@@ -50,9 +55,7 @@ class MovieListFragment : Fragment() {
         movieListFragmentBinding.progressBar.visibility = View.GONE
         val movieRecyclerView = movieListFragmentBinding.movieRv
 
-
-        val component = DaggerMovieComponent.factory().create(requireContext())
-        component.inject(this@MovieListFragment)
+        MovieApplicationClass.component?.inject(this@MovieListFragment)
 
         //val dao = MovieDatabase.getInstance(requireContext())?.movieDAO
 

@@ -1,10 +1,13 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.di
 
 import android.content.Context
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.ui.MovieListFragment
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
 @Component(modules = [DataSourceModule::class])
+@Singleton
 interface MovieComponent {
     fun inject(movieListFragment: MovieListFragment)
 

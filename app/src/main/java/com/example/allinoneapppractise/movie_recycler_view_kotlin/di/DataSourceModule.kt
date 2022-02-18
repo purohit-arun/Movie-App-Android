@@ -1,14 +1,12 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDatabase
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote.MovieService
 import com.example.retrofitdemo.retrofit_practise.MovieRetrofitInstance
 import com.google.gson.GsonBuilder
-import dagger.Binds
 import dagger.BindsInstance
 import dagger.Module
 import dagger.Provides
@@ -21,11 +19,16 @@ class DataSourceModule {
 
     // For Providing the object related to the room service
     @Provides
+    @Singleton
     fun providesRoomDatabaseInstance(context: Context): MovieDatabase {
-        return MovieDatabase.getInstance(context)!!
+        return Room.databaseBuilder(
+            context.applicationContext,
+            MovieDatabase::class.java,
+            "movie_database"
+        ).build()
     }
 
-    //@Singleton
+    @Singleton
     @Provides
     fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
         return movieDatabase.movieDAO

@@ -7,12 +7,13 @@ import androidx.room.RoomDatabase
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
+import javax.inject.Singleton
 
 @Database(entities = [Movie::class], version = 1, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {
     abstract val movieDAO: MovieDao
 
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: MovieDatabase? = null
 
@@ -27,11 +28,7 @@ abstract class MovieDatabase : RoomDatabase() {
                     var instance = INSTANCE
                     if (instance == null) {
 
-                        instance =Room.databaseBuilder(
-                            context.applicationContext,
-                            MovieDatabase::class.java,
-                            "movie_database"
-                        ).build()
+                        instance =
                     }
                     instance
 
@@ -43,5 +40,5 @@ abstract class MovieDatabase : RoomDatabase() {
                 }
             }
         }
-    }
+    }*/
 }
