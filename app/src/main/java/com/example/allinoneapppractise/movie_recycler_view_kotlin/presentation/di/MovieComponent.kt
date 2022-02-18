@@ -1,7 +1,7 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.di
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di
 
 import android.content.Context
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.ui.MovieListFragment
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieListFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

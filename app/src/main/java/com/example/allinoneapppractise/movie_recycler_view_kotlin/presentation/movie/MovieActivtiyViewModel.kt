@@ -1,11 +1,12 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.allinoneapppractise.custom_movie_array_adapter_kotlin.Event
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
 class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     private val statusMessage = MutableLiveData<Event<String>>()
@@ -16,6 +17,10 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     val buttonText = MutableLiveData<String>()
     val inputMovie = MutableLiveData<String?>()
     val inputReleaseDate = MutableLiveData<String?>()
+
+    @Inject
+    lateinit var dao: MovieDao
+
 
 
     var movie: LiveData<List<Movie>>? = repository.getMovies()

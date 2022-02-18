@@ -1,4 +1,4 @@
-package com.example.retrofitdemo.retrofit_practise
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

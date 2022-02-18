@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".movie_recycler_view_kotlin.ui.MovieDetailFragment">
+        tools:context=".movie_recycler_view_kotlin.presentation.movie.MovieDetailFragment">
 
         <ImageView
             android:layout_width="match_parent"

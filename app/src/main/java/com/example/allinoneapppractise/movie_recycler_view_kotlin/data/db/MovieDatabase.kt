@@ -1,13 +1,8 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.sync.Mutex
-import javax.inject.Singleton
 
 @Database(entities = [Movie::class], version = 1, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {

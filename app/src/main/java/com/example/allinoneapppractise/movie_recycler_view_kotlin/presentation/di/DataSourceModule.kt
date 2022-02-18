@@ -1,13 +1,13 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.di
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDatabase
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote.MovieService
-import com.example.retrofitdemo.retrofit_practise.MovieRetrofitInstance
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDatabase
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieRetrofitInstance
 import com.google.gson.GsonBuilder
-import dagger.BindsInstance
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -47,5 +47,10 @@ class DataSourceModule {
     @Provides
     fun providesMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
+    }
+
+    @Provides
+    fun providesMovieRepo(dao: MovieDao, retrofit: MovieService): MovieRepo {
+        return MovieRepo(dao, retrofit)
     }
 }

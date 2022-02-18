@@ -1,8 +1,8 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.ui
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
 import java.lang.IllegalArgumentException
 
 class MovieViewModelFactoy(private val repository: MovieRepo) :  ViewModelProvider.Factory{

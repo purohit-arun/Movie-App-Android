@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

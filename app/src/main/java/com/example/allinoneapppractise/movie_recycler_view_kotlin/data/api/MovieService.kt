@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api
 
 import android.graphics.Movie
 import com.example.retrofitdemo.retrofit_practise.movie_data_classes.Movies

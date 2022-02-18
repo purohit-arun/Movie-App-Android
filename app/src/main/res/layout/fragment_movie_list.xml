@@ -6,13 +6,13 @@
     <data>
         <variable
             name="myMovieViewModel"
-            type="com.example.allinoneapppractise.movie_recycler_view_kotlin.ui.MovieActivtiyViewModel" />
+            type="com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".movie_recycler_view_kotlin.ui.MovieListFragment">
+        tools:context=".movie_recycler_view_kotlin.presentation.movie.MovieListFragment">
 
         <EditText
             android:id="@+id/movie_name_et"

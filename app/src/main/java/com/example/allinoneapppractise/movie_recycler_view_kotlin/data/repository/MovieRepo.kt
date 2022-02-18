@@ -1,13 +1,13 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repo
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.local.MovieDao
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.data_source.remote.MovieService
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService
 import kotlinx.coroutines.*
 
-class MovieRepo(
+class MovieRepo (
     private val dao: MovieDao,
     private val movieService: MovieService
 ) {

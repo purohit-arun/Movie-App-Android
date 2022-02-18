@@ -3,7 +3,7 @@ package com.anushka.didemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.allinoneapppractise.R
-import com.example.allinoneapppractise.didemo.DaggerSmartPhoneComponent
+import com.example.allinoneapppractise.MovieApplicationClass
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DaggerSmartPhoneComponent.create().inject(this)
+//        DaggerSmartPhoneComponent.create().inject(this)
+        (application as MovieApplicationClass).smartPhoneComponent
+            .inject(this)
 
+        smartPhone.makeACallWithRecording()
         /*val battery = Battery()
         val memoryCard = MemoryCard()
         val serviceProvider = ServiceProvider()
@@ -26,5 +29,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         smartPhone.makeACallWithRecording()*/
+
+
     }
 }
