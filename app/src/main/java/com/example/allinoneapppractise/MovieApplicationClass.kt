@@ -11,7 +11,6 @@ class MovieApplicationClass : Application() {
     lateinit var smartPhoneComponent: SmartPhoneComponent
     lateinit var movieComponent: MovieComponent
 
-
     override fun onCreate() {
         super.onCreate()
         movieComponent = initDaggerMovieComponent()

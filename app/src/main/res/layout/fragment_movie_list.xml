@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".movie_recycler_view_kotlin.presentation.movie.MovieListFragment">
+        tools:context=".movie_recycler_view_kotlin.presentation.movie.movielist.MovieListFragment">
 
         <EditText
             android:id="@+id/movie_name_et"

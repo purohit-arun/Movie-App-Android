@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.movielist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +18,10 @@ import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieD
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieRecyclerViewAdapter
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactoy
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.moviedetail.MovieDetailFragment
 import javax.inject.Inject
 
 class MovieListFragment : Fragment() {
@@ -26,20 +30,20 @@ class MovieListFragment : Fragment() {
     lateinit var movieList: List<Movie>
     private lateinit var movieListFragmentBinding: FragmentMovieListBinding
 
-    @Inject
+    /* @Inject
+     lateinit var dao: MovieDao
+
+     @Inject
     lateinit var movieDatabase: MovieDatabase
 
-    @Inject
-    lateinit var dao: MovieDao
+     @Inject
+     lateinit var movieService: MovieService
+
+     @Inject
+     lateinit var movieRepo: MovieRepo*/
 
     @Inject
-    lateinit var dao1: MovieDao
-
-    @Inject
-    lateinit var movieService: MovieService
-
-    @Inject
-    lateinit var movieRepo: MovieRepo
+    lateinit var movieViewModelFactoy: MovieViewModelFactoy
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +54,8 @@ class MovieListFragment : Fragment() {
         return movieListFragmentBinding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,18 +65,17 @@ class MovieListFragment : Fragment() {
         (requireActivity().application as MovieApplicationClass)
             .movieComponent.inject(this@MovieListFragment)
 
-        //val dao = MovieDatabase.getInstance(requireContext())?.movieDAO
 
-
-        /* movieService = MovieRetrofitInstance
+        /*
+        val dao = MovieDatabase.getInstance(requireContext())?.movieDAO
+        movieService = MovieRetrofitInstance
              .getRetrofitInstance()
-             .create(MovieService::class.java)*/
+             .create(MovieService::class.java)
+              val repository = MovieRepo(dao, movieService)
+             val factory = MovieViewModelFactoy(movieRepo)
+             */
 
-
-        //val repository = MovieRepo(dao, movieService)
-        val factory = MovieViewModelFactoy(movieRepo)
-        myMovieViewModel = ViewModelProvider(this, factory)[MovieActivtiyViewModel::class.java]
-
+        myMovieViewModel = ViewModelProvider(this, movieViewModelFactoy)[MovieActivtiyViewModel::class.java]
         Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         movieListFragmentBinding.myMovieViewModel = myMovieViewModel
         movieListFragmentBinding.lifecycleOwner = this

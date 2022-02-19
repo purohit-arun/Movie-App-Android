@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.moviedetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
