@@ -22,7 +22,7 @@ import javax.inject.Singleton
 class DataSourceModule {
 
     // For Providing the object related to the room service
-    @Provides
+    /*@Provides
     @Singleton
     fun providesRoomDatabaseInstance(context: Context): MovieDatabase {
         return Room.databaseBuilder(
@@ -30,17 +30,17 @@ class DataSourceModule {
             MovieDatabase::class.java,
             "movie_database"
         ).build()
-    }
+    }*/
 
-    @Singleton
+   /* @Singleton
     @Provides
     fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
         return movieDatabase.movieDAO
-    }
+    }*/
 
 
     // For Providing the object related to the retrofit service
-    @Provides
+   /* @Provides
     fun providesRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(MovieRetrofitInstance.BASE_URL)
@@ -51,7 +51,7 @@ class DataSourceModule {
     @Provides
     fun providesMovieService(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
-    }
+    }*/
 
     @Provides
     fun providesMovieRepo(dao: MovieDao, retrofit: MovieService): MovieRepo {

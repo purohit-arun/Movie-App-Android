@@ -63,7 +63,7 @@ class MovieListFragment : Fragment() {
         val movieRecyclerView = movieListFragmentBinding.movieRv
 
         (requireActivity().application as MovieApplicationClass)
-            .movieComponent.inject(this@MovieListFragment)
+            .movieComponent.subcomponent().create().inject(this@MovieListFragment)
 
 
         /*

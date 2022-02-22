@@ -13,7 +13,6 @@ class MovieApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        movieComponent = initDaggerMovieComponent()
         smartPhoneComponent = initDaggerSmartPhoneComponent()
     }
 
