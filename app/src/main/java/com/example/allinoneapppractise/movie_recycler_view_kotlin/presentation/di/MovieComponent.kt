@@ -11,6 +11,7 @@ import javax.inject.Singleton
 interface MovieComponent {
     fun inject(movieListFragment: MovieListFragment)
 
+
     //to make factory
     @Component.Factory
     interface Factory{
