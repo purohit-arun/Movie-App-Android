@@ -40,8 +40,8 @@ class MovieListFragment : DaggerFragment() {
      @Inject
      lateinit var movieRepo: MovieRepo*/
 
-    @Inject
-    lateinit var assistedDemoFactory: AssistedDemo.Factory
+//    @Inject
+//    lateinit var assistedDemoFactory: AssistedDemo.Factory
 
     @Inject
     lateinit var movieViewModelFactoy: MovieViewModelFactoy
@@ -62,8 +62,8 @@ class MovieListFragment : DaggerFragment() {
         movieListFragmentBinding.progressBar.visibility = View.GONE
         val movieRecyclerView = movieListFragmentBinding.movieRv
 
-        (requireActivity().application as MovieApplicationClass)
-            .movieComponent.MovieViewModelSubComponent().create().inject(this)
+        /*(requireActivity().application as MovieApplicationClass)
+            .movieComponent.MovieViewModelSubComponent().create().inject(this)*/
 
 
         /*
@@ -75,7 +75,7 @@ class MovieListFragment : DaggerFragment() {
              val factory = MovieViewModelFactoy(movieRepo)
              */
 
-        assistedDemoFactory.create("arun")
+//        assistedDemoFactory.create("arun")
         myMovieViewModel = ViewModelProvider(this, movieViewModelFactoy)[MovieActivtiyViewModel::class.java]
         Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         movieListFragmentBinding.myMovieViewModel = myMovieViewModel

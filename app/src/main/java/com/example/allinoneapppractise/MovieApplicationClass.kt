@@ -9,13 +9,17 @@ import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.d
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
-class MovieApplicationClass : Application() {
+class MovieApplicationClass : DaggerApplication() {
     lateinit var smartPhoneComponent: SmartPhoneComponent
     lateinit var movieComponent: MovieComponent
     override fun onCreate() {
         super.onCreate()
         movieComponent = initDaggerMovieComponent()
         smartPhoneComponent = initDaggerSmartPhoneComponent()
+    }
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerMovieComponent.factory().create(this)
     }
 
     private fun initDaggerMovieComponent(): MovieComponent = DaggerMovieComponent.factory().create(applicationContext)
