@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.modules
 
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieRetrofitInstance
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService

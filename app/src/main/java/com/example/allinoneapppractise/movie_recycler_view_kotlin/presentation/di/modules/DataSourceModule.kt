@@ -1,4 +1,4 @@
-package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di
+package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.modules
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -58,10 +58,10 @@ class DataSourceModule {
         return MovieRepo(dao, retrofit)
     }
 
-    @Provides
+   /* @Provides
     fun providesMovieViewModelFactory(movieRepo: MovieRepo): MovieViewModelFactoy {
         return MovieViewModelFactoy(movieRepo)
-    }
+    }*/
 
    /* @Provides
     fun providesMovieViewModel(

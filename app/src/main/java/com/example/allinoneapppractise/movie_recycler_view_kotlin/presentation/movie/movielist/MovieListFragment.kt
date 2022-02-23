@@ -10,24 +10,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.allinoneapppractise.MovieApplicationClass
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.FragmentMovieListBinding
-import com.example.allinoneapppractise.MovieApplicationClass
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDatabase
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.AssistedDemo
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.Sub.MovieViewModelSubComponent
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieRecyclerViewAdapter
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactoy
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.moviedetail.MovieDetailFragment
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class MovieListFragment : Fragment() {
+class MovieListFragment : DaggerFragment() {
     lateinit var mAdapter: MovieRecyclerViewAdapter
     lateinit var myMovieViewModel: MovieActivtiyViewModel
-    lateinit var movieList: List<Movie>
     private lateinit var movieListFragmentBinding: FragmentMovieListBinding
 
     /* @Inject
@@ -43,6 +41,9 @@ class MovieListFragment : Fragment() {
      lateinit var movieRepo: MovieRepo*/
 
     @Inject
+    lateinit var assistedDemoFactory: AssistedDemo.Factory
+
+    @Inject
     lateinit var movieViewModelFactoy: MovieViewModelFactoy
 
     override fun onCreateView(
@@ -55,7 +56,6 @@ class MovieListFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,7 +63,7 @@ class MovieListFragment : Fragment() {
         val movieRecyclerView = movieListFragmentBinding.movieRv
 
         (requireActivity().application as MovieApplicationClass)
-            .movieComponent.subcomponent().create().inject(this@MovieListFragment)
+            .movieComponent.MovieViewModelSubComponent().create().inject(this)
 
 
         /*
@@ -75,6 +75,7 @@ class MovieListFragment : Fragment() {
              val factory = MovieViewModelFactoy(movieRepo)
              */
 
+        assistedDemoFactory.create("arun")
         myMovieViewModel = ViewModelProvider(this, movieViewModelFactoy)[MovieActivtiyViewModel::class.java]
         Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         movieListFragmentBinding.myMovieViewModel = myMovieViewModel

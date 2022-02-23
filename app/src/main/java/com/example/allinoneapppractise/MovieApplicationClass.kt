@@ -4,15 +4,17 @@ import android.app.Application
 import com.example.allinoneapppractise.didemo.DaggerSmartPhoneComponent
 import com.example.allinoneapppractise.didemo.MemoryCardModule
 import com.example.allinoneapppractise.didemo.SmartPhoneComponent
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.DaggerMovieComponent
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.MovieComponent
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.component.DaggerMovieComponent
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.component.MovieComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
 class MovieApplicationClass : Application() {
     lateinit var smartPhoneComponent: SmartPhoneComponent
     lateinit var movieComponent: MovieComponent
-
     override fun onCreate() {
         super.onCreate()
+        movieComponent = initDaggerMovieComponent()
         smartPhoneComponent = initDaggerSmartPhoneComponent()
     }
 

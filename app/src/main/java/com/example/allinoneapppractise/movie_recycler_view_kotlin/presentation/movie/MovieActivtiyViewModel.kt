@@ -5,10 +5,14 @@ import com.example.allinoneapppractise.custom_movie_array_adapter_kotlin.Event
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
+class MovieActivtiyViewModel(
+    private val repository: MovieRepo
+) : ViewModel() {
     private val statusMessage = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>>
         get() = statusMessage
@@ -20,7 +24,6 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
 
     @Inject
     lateinit var dao: MovieDao
-
 
 
     var movie: LiveData<List<Movie>>? = repository.getMovies()
@@ -111,7 +114,6 @@ class MovieActivtiyViewModel(private val repository: MovieRepo) : ViewModel() {
     fun deleteMovie(movie: Movie) = viewModelScope.launch {
         val newRowId: Int = repository.deleteMovie(movie)
     }
-
 
 
 }

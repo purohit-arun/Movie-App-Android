@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.ActivityMovieRecyclerViewBinding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.movielist.MovieListFragment
+import dagger.android.support.DaggerAppCompatActivity
 
 class MovieRecyclerViewActivity : AppCompatActivity() {
     lateinit var binding: ActivityMovieRecyclerViewBinding
