@@ -8,7 +8,7 @@ import com.example.allinoneapppractise.databinding.ActivityMovieRecyclerViewBind
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.movielist.MovieListFragment
 import dagger.android.support.DaggerAppCompatActivity
 
-class MovieRecyclerViewActivity : AppCompatActivity() {
+class MovieRecyclerViewActivity : DaggerAppCompatActivity() {
     lateinit var binding: ActivityMovieRecyclerViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 

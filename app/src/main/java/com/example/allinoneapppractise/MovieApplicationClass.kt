@@ -1,6 +1,5 @@
 package com.example.allinoneapppractise
 
-import android.app.Application
 import com.example.allinoneapppractise.didemo.DaggerSmartPhoneComponent
 import com.example.allinoneapppractise.didemo.MemoryCardModule
 import com.example.allinoneapppractise.didemo.SmartPhoneComponent
@@ -14,15 +13,15 @@ class MovieApplicationClass : DaggerApplication() {
     lateinit var movieComponent: MovieComponent
     override fun onCreate() {
         super.onCreate()
-        movieComponent = initDaggerMovieComponent()
+//        movieComponent = initDaggerMovieComponent()
         smartPhoneComponent = initDaggerSmartPhoneComponent()
     }
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
         return DaggerMovieComponent.factory().create(this)
     }
 
-    private fun initDaggerMovieComponent(): MovieComponent = DaggerMovieComponent.factory().create(applicationContext)
+//    private fun initDaggerMovieComponent(): MovieComponent = DaggerMovieComponent.factory().create(applicationContext)
 
     private fun initDaggerSmartPhoneComponent(): SmartPhoneComponent {
         return DaggerSmartPhoneComponent.builder().memoryCardModule(MemoryCardModule(20)).build()
