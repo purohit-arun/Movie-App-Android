@@ -14,34 +14,16 @@ import com.example.allinoneapppractise.MovieApplicationClass
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.FragmentMovieListBinding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.AssistedDemo
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.Sub.MovieViewModelSubComponent
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieRecyclerViewAdapter
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactoy
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.moviedetail.MovieDetailFragment
-import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class MovieListFragment : DaggerFragment() {
+class MovieListFragment : Fragment() {
     lateinit var mAdapter: MovieRecyclerViewAdapter
     lateinit var myMovieViewModel: MovieActivtiyViewModel
     private lateinit var movieListFragmentBinding: FragmentMovieListBinding
-
-    /* @Inject
-     lateinit var dao: MovieDao
-
-     @Inject
-    lateinit var movieDatabase: MovieDatabase
-
-     @Inject
-     lateinit var movieService: MovieService
-
-     @Inject
-     lateinit var movieRepo: MovieRepo*/
-
-//    @Inject
-//    lateinit var assistedDemoFactory: AssistedDemo.Factory
 
     @Inject
     lateinit var movieViewModelFactoy: MovieViewModelFactoy
@@ -62,20 +44,9 @@ class MovieListFragment : DaggerFragment() {
         movieListFragmentBinding.progressBar.visibility = View.GONE
         val movieRecyclerView = movieListFragmentBinding.movieRv
 
-        /*(requireActivity().application as MovieApplicationClass)
-            .movieComponent.MovieViewModelSubComponent().create().inject(this)*/
+        (requireActivity().application as MovieApplicationClass)
+            .movieComponent.MovieViewModelSubComponent().create().inject(this)
 
-
-        /*
-        val dao = MovieDatabase.getInstance(requireContext())?.movieDAO
-        movieService = MovieRetrofitInstance
-             .getRetrofitInstance()
-             .create(MovieService::class.java)
-              val repository = MovieRepo(dao, movieService)
-             val factory = MovieViewModelFactoy(movieRepo)
-             */
-
-//        assistedDemoFactory.create("arun")
         myMovieViewModel = ViewModelProvider(this, movieViewModelFactoy)[MovieActivtiyViewModel::class.java]
         Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         movieListFragmentBinding.myMovieViewModel = myMovieViewModel
