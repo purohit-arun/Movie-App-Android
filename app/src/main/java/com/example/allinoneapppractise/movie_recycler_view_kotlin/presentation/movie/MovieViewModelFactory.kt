@@ -6,10 +6,10 @@ import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repositor
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
-class MovieViewModelFactoy(private val repository: MovieRepo) : ViewModelProvider.Factory {
+class MovieViewModelFactory @Inject constructor(private val repository: MovieRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MovieActivtiyViewModel::class.java)) {
-            return MovieActivtiyViewModel(repository) as T
+        if (modelClass.isAssignableFrom(MovieActivityViewModel::class.java)) {
+            return MovieActivityViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

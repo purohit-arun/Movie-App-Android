@@ -14,19 +14,19 @@ import com.example.allinoneapppractise.MovieApplicationClass
 import com.example.allinoneapppractise.R
 import com.example.allinoneapppractise.databinding.FragmentMovieListBinding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivityViewModel
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieRecyclerViewAdapter
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactoy
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactory
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.moviedetail.MovieDetailFragment
 import javax.inject.Inject
 
 class MovieListFragment : Fragment() {
     lateinit var mAdapter: MovieRecyclerViewAdapter
-    lateinit var myMovieViewModel: MovieActivtiyViewModel
+    lateinit var myMovieViewModel: MovieActivityViewModel
     private lateinit var movieListFragmentBinding: FragmentMovieListBinding
 
     @Inject
-    lateinit var movieViewModelFactoy: MovieViewModelFactoy
+    lateinit var movieViewModelFactory: MovieViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +47,7 @@ class MovieListFragment : Fragment() {
         (requireActivity().application as MovieApplicationClass)
             .movieComponent.MovieViewModelSubComponent().create().inject(this)
 
-        myMovieViewModel = ViewModelProvider(this, movieViewModelFactoy)[MovieActivtiyViewModel::class.java]
+        myMovieViewModel = ViewModelProvider(this, movieViewModelFactory)[MovieActivityViewModel::class.java]
         Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         movieListFragmentBinding.myMovieViewModel = myMovieViewModel
         movieListFragmentBinding.lifecycleOwner = this

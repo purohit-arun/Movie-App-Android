@@ -10,7 +10,7 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-class MovieActivtiyViewModel(
+class MovieActivityViewModel(
     private val repository: MovieRepo
 ) : ViewModel() {
     private val statusMessage = MutableLiveData<Event<String>>()

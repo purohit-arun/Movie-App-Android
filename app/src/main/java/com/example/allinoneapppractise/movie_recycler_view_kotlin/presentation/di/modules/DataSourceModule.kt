@@ -1,22 +1,10 @@
 package com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.modules
 
-import android.content.Context
-import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDao
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.db.MovieDatabase
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieService
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.repository.MovieRepo
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.api.MovieRetrofitInstance
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieActivtiyViewModel
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.MovieViewModelFactoy
-import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.movielist.MovieListFragment
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class DataSourceModule {

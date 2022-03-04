@@ -6,6 +6,7 @@ import com.example.allinoneapppractise.MovieApplicationClass
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.Sub.MovieViewModelSubComponent
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.Sub.SubComponentModule
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.di.modules.*
+import com.example.allinoneapppractise.movie_recycler_view_kotlin.presentation.movie.movielist.MovieListFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -27,7 +28,7 @@ import javax.inject.Singleton
 interface MovieComponent : AndroidInjector<MovieApplicationClass> {
     //fun inject(movieListFragment: MovieListFragment)
 
-    //fun MovieViewModelSubComponent(): MovieViewModelSubComponent.Factory
+    fun MovieViewModelSubComponent(): MovieViewModelSubComponent.Factory
 
     //to make factory
     @Component.Factory
