@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.allinoneapppractise.MovieApplicationClass
 import com.example.allinoneapppractise.R
@@ -89,10 +90,11 @@ class MovieListFragment : Fragment() {
         myMovieViewModel.initInsertAndUpdate(movieItem)
 
         // Details Fragment replaced in the activity if clicked on the movie
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.movie_list_fragment_container, MovieDetailFragment.newInstance(movieItem))
-            .addToBackStack(null)
-            .commit()
+        val action =
+            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(
+                movieItem
+            )
+        view?.findNavController()?.navigate(action)
 
     }
 

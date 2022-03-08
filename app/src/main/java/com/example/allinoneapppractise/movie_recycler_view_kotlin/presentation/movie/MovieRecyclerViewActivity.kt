@@ -11,17 +11,7 @@ import dagger.android.support.DaggerAppCompatActivity
 class MovieRecyclerViewActivity : DaggerAppCompatActivity() {
     lateinit var binding: ActivityMovieRecyclerViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-
-
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_movie_recycler_view)
-        if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction()
-                .add(R.id.movie_list_fragment_container, MovieListFragment())
-                .commit()
-        }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_recycler_view)
     }
-
-
 }

@@ -5,32 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.example.allinoneapppractise.databinding.FragmentMovieDetailBinding
 import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.local.Movie
 
 class MovieDetailFragment : Fragment() {
+    private val args by navArgs<MovieDetailFragmentArgs>()
+    private lateinit var fragmentMovieDetailBinding: FragmentMovieDetailBinding
 
-    companion object{
+    companion object {
         private const val MOVIE = "movie"
-        fun newInstance(movie:Movie): MovieDetailFragment {
-            val args = Bundle()
-            args.putSerializable(MOVIE, movie)
-            val fragment = MovieDetailFragment()
-            fragment.arguments = args
-            return fragment
-        }
     }
-
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val fragmentMovieDetailBinding = FragmentMovieDetailBinding.inflate(inflater,container, false)
-        val movie = requireArguments().getSerializable(MOVIE) as Movie
-        fragmentMovieDetailBinding.movieDetailModel = movie
+
+        fragmentMovieDetailBinding = FragmentMovieDetailBinding.inflate(inflater, container, false)
+        //val movie = requireArguments().getSerializable(MOVIE) as Movie
         return fragmentMovieDetailBinding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragmentMovieDetailBinding.movieDetailModel = args.selectedMovie
+
+    }
 }
+
+
