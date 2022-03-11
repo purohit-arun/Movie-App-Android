@@ -3,10 +3,13 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#57AE44</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="network_alert_red">#F30E0E</color>
+
+
     <!-- Primary color of the app (shown in the app bar) -->
     <color name="colorPrimary">#2B3D4D</color>
 
@@ -51,4 +54,10 @@
 
     <!-- Magnitude circle color for an earthquake with magnitude over 10 -->
     <color name="magnitude10plus">#C03823</color>
+
+
+    <color name="primaryColor">#9b7a54</color>
+    <color name="activityBackground">#cda981</color>
+    <color name="primaryDarkColor">#6b4e2a</color>
+    <color name="primaryTextColor">#000000</color>
 </resources>

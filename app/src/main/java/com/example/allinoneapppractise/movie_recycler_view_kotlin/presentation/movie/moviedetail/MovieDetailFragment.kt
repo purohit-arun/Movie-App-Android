@@ -12,19 +12,12 @@ import com.example.allinoneapppractise.movie_recycler_view_kotlin.data.models.lo
 class MovieDetailFragment : Fragment() {
     private val args by navArgs<MovieDetailFragmentArgs>()
     private lateinit var fragmentMovieDetailBinding: FragmentMovieDetailBinding
-
-    companion object {
-        private const val MOVIE = "movie"
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         fragmentMovieDetailBinding = FragmentMovieDetailBinding.inflate(inflater, container, false)
-        //val movie = requireArguments().getSerializable(MOVIE) as Movie
         return fragmentMovieDetailBinding.root
     }
 

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.allinoneapppractise">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
@@ -14,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
         <activity
+            android:name=".sample_acurovet.BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".material_design.MaterialDemo1Activity"
+            android:exported="true" />
+        <activity
+            android:name=".sample_acurovet.AVSampleActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,13 +85,7 @@
             android:exported="false" />
         <activity
             android:name=".movie_recycler_view_kotlin.presentation.movie.MovieRecyclerViewActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

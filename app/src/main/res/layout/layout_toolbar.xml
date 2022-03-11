@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="1dp"
+            app:title="Title bar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/show_connection_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/network_alert_red"
+            android:drawableStart="@drawable/ic_info"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="@string/no_connection_available"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:text="No Connection available" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</layout>
