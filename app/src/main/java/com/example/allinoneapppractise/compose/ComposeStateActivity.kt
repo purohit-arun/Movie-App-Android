@@ -10,9 +10,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
@@ -67,11 +65,11 @@ fun DefaultPreview() {
 @Composable
 fun MyButton() {
     val context = LocalContext.current
-    val count = remember { mutableStateOf(0) }
+    var count by remember { mutableStateOf(0) }
     Button(
         onClick = {
-            count.value = count.value + 1
-            Toast.makeText(context, "Count is ${count.value} ", Toast.LENGTH_SHORT).show()
+            count += 1
+            Toast.makeText(context, "Count is $count ", Toast.LENGTH_SHORT).show()
         },
         contentPadding = PaddingValues(16.dp),
         border = BorderStroke(width = 1.dp, color = Black),
@@ -82,7 +80,7 @@ fun MyButton() {
     )
     {
         Text(
-            "Count is ${count.value}",
+            "Count is $count",
             style = MaterialTheme.typography.h3,
             modifier = Modifier.padding(5.dp)
         )
