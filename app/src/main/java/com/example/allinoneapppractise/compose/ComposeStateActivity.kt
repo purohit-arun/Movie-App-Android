@@ -1,7 +1,6 @@
 package com.example.allinoneapppractise.compose
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -17,7 +16,6 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.allinoneapppractise.compose.ui.theme.AllInOneAppPractiseTheme
 
@@ -39,7 +37,10 @@ class ComposeStateActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    MyButton()
+                    var count by remember { mutableStateOf(0) }
+                    MyButton(count) {
+                        count = it + 1
+                    }
                 }
             }
 
@@ -61,15 +62,12 @@ fun DefaultPreview() {
     }
 }*/
 
-@Preview(name = "MyButton")
 @Composable
-fun MyButton() {
+fun MyButton(currentCount: Int, updateCount: (Int) -> Unit) {
     val context = LocalContext.current
-    var count by remember { mutableStateOf(0) }
     Button(
         onClick = {
-            count += 1
-            Toast.makeText(context, "Count is $count ", Toast.LENGTH_SHORT).show()
+            updateCount(currentCount)
         },
         contentPadding = PaddingValues(16.dp),
         border = BorderStroke(width = 1.dp, color = Black),
@@ -80,7 +78,7 @@ fun MyButton() {
     )
     {
         Text(
-            "Count is $count",
+            "Count is $currentCount",
             style = MaterialTheme.typography.h3,
             modifier = Modifier.padding(5.dp)
         )
