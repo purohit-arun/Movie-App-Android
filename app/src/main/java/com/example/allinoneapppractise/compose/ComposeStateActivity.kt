@@ -10,10 +10,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
@@ -21,6 +17,7 @@ import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.allinoneapppractise.compose.ui.theme.AllInOneAppPractiseTheme
 
 class ComposeStateActivity : ComponentActivity() {
@@ -41,9 +38,10 @@ class ComposeStateActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    var count by rememberSaveable { mutableStateOf(0) }
+                    val viewModel = viewModel<MyViewModel>()
+                    var count = viewModel.count
                     MyButton(count) {
-                        count = it + 1
+                        viewModel.increaseCount()
                     }
                 }
             }
