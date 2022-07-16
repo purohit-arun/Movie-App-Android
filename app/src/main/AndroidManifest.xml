@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllInOneAppPractise">
         <activity
-            android:name=".compose.ComposeStateActivity"
+            android:name=".compose.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_compose_state"
             android:theme="@style/Theme.AllInOneAppPractise">
@@ -24,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
